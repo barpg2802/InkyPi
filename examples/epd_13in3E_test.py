@@ -3,14 +3,14 @@
 import sys
 import os
 
-# Add the src directory to the path so we can import the waveshare_epd module
+# Add the src directory to the path so we can import the driver directly
 projectdir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-sys.path.insert(0, os.path.join(projectdir, 'src', 'display'))
+sys.path.insert(0, os.path.join(projectdir, 'src', 'display', 'waveshare_epd'))
 
 picdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'pic')
 
 import logging
-from waveshare_epd import epd13in3E
+import epd13in3E
 import time
 from PIL import Image, ImageDraw, ImageFont
 import traceback
@@ -22,7 +22,7 @@ try:
     epd = epd13in3E.EPD()
 
     logging.info("Init and Clear")
-    epd.init()
+    epd.Init()
     epd.Clear()
     time.sleep(2)
 
